@@ -1,7 +1,7 @@
 # grunt-urequire 0.7.3
 ==============
 
-Grunt (>= 0.4.5 ) wrapper for [uRequire](https://github.com/anodynos/uRequire), (>= v0.7.0)
+Grunt (>= 0.4.5 ) wrapper for [uRequire](https://github.com/Unity-Billal-mesloub/uRequire), (>= v0.7.0)
 
 **Note: You 'll need `npm install urequire` (version >- 0.7.0) already installed with your project - it comes only as a `peerDependency` of `grunt-urequire`.**
 
@@ -13,7 +13,7 @@ Using Grunt + uRequire saves you a huge amount of effort and the need for many g
 
 You 'll keep it DRY (Dont Reapeat Yourself) and eliminate the need of many grunt plugins for tasks like compiling from coffee-script, coco, LiveScript etc, creating banners etc with `grunt-contrib-concat`, minimizing with `grunt-contrib-uglify`, watching with `grunt-contrib-watch`, running hand written specrunners with `grunt-mocha` and many many others.
 
-All of these these features plus much more, become a single line of declarative uRequire config or the declarative invocation of a `ResourceConverter` such as [`inject-version`](https://github.com/anodynos/urequire-rc-inject-version) or [`import-keys`](https://github.com/anodynos/urequire-rc-import-keys) or invoking an `afterBuild`-er such as [`urequire-ab-specrunner`](https://github.com/anodynos/urequire-ab-specrunner) or [`urequire-ab-grunt-contrib-watch`](https://github.com/anodynos/urequire-ab-grunt-contrib-watch).
+All of these these features plus much more, become a single line of declarative uRequire config or the declarative invocation of a `ResourceConverter` such as [`inject-version`](https://github.com/Unity-Billal-mesloub/urequire-rc-inject-version) or [`import-keys`](https://github.com/Unity-Billal-mesloub/urequire-rc-import-keys) or invoking an `afterBuild`-er such as [`urequire-ab-specrunner`](https://github.com/Unity-Billal-mesloub/urequire-ab-specrunner) or [`urequire-ab-grunt-contrib-watch`](https://github.com/Unity-Billal-mesloub/urequire-ab-grunt-contrib-watch).
 
 Plus you can do many module, dependencies & code manipulation related tasks that no other task runner allows you to do, such as `import`-ing, injecting or renaming dependencies, manipulating & merging common code and much more.
 
@@ -147,7 +147,7 @@ The grand daddy way & boring way is to manually write it __(DRY warning: with in
 
 *Important note*: Use `watch: xxx: {options: spawn: false}` to allow uRequire to use the the already loaded bundle/modules information for rapid rebuilds of only changed files.
 
-#### Use the auto configuring [`urequire-ab-grunt-contrib-watch`](https://github.com/anodynos/urequire-ab-grunt-contrib-watch)
+#### Use the auto configuring [`urequire-ab-grunt-contrib-watch`](https://github.com/Unity-Billal-mesloub/urequire-ab-grunt-contrib-watch)
 
 The simpler way is to have `grunt-urequire` auto configure and invoke a watch task, since the paths & tasks information is already in your urequire config. Just use the special `'grunt-urequire'` keyword instead of `true` for urequire's watch:
 
@@ -162,7 +162,7 @@ that auto configures and runs the above.
 
 ##### Passing options
 
-Is you want to pass [`grunt-contrib-watch` *options*](https://github.com/gruntjs/grunt-contrib-watch#watch-task) use this syntax:
+Is you want to pass [`grunt-contrib-watch` *options*](https://github.com/Unity-Billal-mesloub/grunt-contrib-watch#watch-task) use this syntax:
 
     ```
       watch:
@@ -174,7 +174,7 @@ but be warned that `atBegin: true` and `spawn: true` should not be set.
 
 ##### Other options
 
-You can pass more options to [`urequire-ab-grunt-contrib-watch`](https://github.com/anodynos/urequire-ab-grunt-contrib-watch), like any grunt (or grunt-urequire) tasks that run `before` or `after` the current task at each watch cycle, or other `files` to be watched and trigger a watch cycle if they change:
+You can pass more options to [`urequire-ab-grunt-contrib-watch`](https://github.com/Unity-Billal-mesloub/urequire-ab-grunt-contrib-watch), like any grunt (or grunt-urequire) tasks that run `before` or `after` the current task at each watch cycle, or other `files` to be watched and trigger a watch cycle if they change:
 
     ```
     urequire:
@@ -192,13 +192,13 @@ You can pass more options to [`urequire-ab-grunt-contrib-watch`](https://github.
 
 If the task is a `urequire:someTask`, then its `bundle.path` as a files pattern is added to `grunt-contrib-watch` files automatically.
 
-For more information see [`urequire-ab-grunt-contrib-watch`](https://github.com/anodynos/urequire-ab-grunt-contrib-watch) that is powering the auto `grunt-contrib-watch` feature.
+For more information see [`urequire-ab-grunt-contrib-watch`](https://github.com/Unity-Billal-mesloub/urequire-ab-grunt-contrib-watch) that is powering the auto `grunt-contrib-watch` feature.
 
 #### Automagically run `specs` against `libs`
 
 Manually configuring `watch`, `mocha` tasks and phantomjs, requirejs/AMD & all their relative paths, configs, shims, HTMLs etc against each different build, can be a huge pain. You 'll find repeating your self too much, fiddling with what paths work and what breaks, instead of writing awesome libs and specs.
 
-So do check out the [urequire-ab-specrunner](https://github.com/anodynos/urequire-ab-specrunner) `afterBuild`-er which uses the uRequire `bundle` & `build` information already in your urequire config, auto discovers the bower paths and automagically generates, configures and runs your specs against a lib.
+So do check out the [urequire-ab-specrunner](https://github.com/Unity-Billal-mesloub/urequire-ab-specrunner) `afterBuild`-er which uses the uRequire `bundle` & `build` information already in your urequire config, auto discovers the bower paths and automagically generates, configures and runs your specs against a lib.
 
 It works perfectly with watching through `grunt-contrib-watch`, which __you dont__ need to configure at all. And it knows if your bundle sources really changed or if build failed, so it wont run the specs until resolved or really changed.
 
@@ -215,12 +215,12 @@ All you 'll need is:
 
 or just add the `afterBuild: require('urequire-ab-specrunner')` to `spec` so that all `specXXX` inherit it, and hit `$ grunt UMD specMin`.
 
-Add a `watch: true` to your config, and `watch`-ing starts automatically after the first build (it actually auto configures and invokes `grunt-contrib-watch`) through [`urequire-ab-grunt-contrib-watch`](https://github.com/anodynos/urequire-ab-grunt-contrib-watch) just like `grunt-require` does with `'watch: 'grunt-urequire'`).
+Add a `watch: true` to your config, and `watch`-ing starts automatically after the first build (it actually auto configures and invokes `grunt-contrib-watch`) through [`urequire-ab-grunt-contrib-watch`](https://github.com/Unity-Billal-mesloub/urequire-ab-grunt-contrib-watch) just like `grunt-require` does with `'watch: 'grunt-urequire'`).
 
 ### More
 
-For all config options check out [the documentation at uRequire.org](http://uRequire.org).
+For all config options check out [the documentation at Unity-Billal-mesloub.org](http://Unity-Billal-mesloub.org).
 
 #### More examples
 
-Check out [urequire-example](https://github.com/anodynos/urequire-example) & [uBerscore](https://github.com/anodynos/uberscore) for a full working examples.
+Check out [urequire-example](https://github.com/Unity-Billal-mesloub/urequire-example) & [uBerscore](https://github.com/Unity-Billal-mesloub/uberscore) for a full working examples.
